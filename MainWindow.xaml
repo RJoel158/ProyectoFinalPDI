@@ -1,12 +1,196 @@
 ﻿<Window x:Class="ProyectoFinalPDI.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:ProyectoFinalPDI"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Pose Match Challenge" Height="720" Width="1100"
+        Background="#0D0D1A"
+        Loaded="Window_Loaded"
+        Closing="Window_Closing">
+
+    <Window.Resources>
+        <Style x:Key="LiveHeart" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="28"/>
+            <Setter Property="Foreground" Value="#FF4B6A"/>
+        </Style>
+    </Window.Resources>
+
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="280"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- CÁMARA + OVERLAY -->
+        <Grid Grid.Column="0" Margin="10">
+            <Border CornerRadius="16" ClipToBounds="True"
+                    BorderBrush="#7B61FF" BorderThickness="2">
+                <Image x:Name="CameraFeed" Stretch="UniformToFill"/>
+            </Border>
+
+            <!-- Timer bar -->
+            <Border VerticalAlignment="Top" Margin="20,14,20,0"
+                    Height="12" CornerRadius="6" Background="#22FFFFFF">
+                <Border x:Name="TimerBar" HorizontalAlignment="Left"
+                        Width="760" Height="12" CornerRadius="6"
+                        Background="#7B61FF">
+                    <Border.Effect>
+                        <DropShadowEffect Color="#7B61FF" BlurRadius="10" ShadowDepth="0"/>
+                    </Border.Effect>
+                </Border>
+            </Border>
+
+            <!-- Overlay éxito -->
+            <Border x:Name="SuccessOverlay" Visibility="Collapsed"
+                    Background="#AA00C853" CornerRadius="16">
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <TextBlock Text="✓" FontSize="120" Foreground="White"
+                               HorizontalAlignment="Center" FontWeight="Bold">
+                        <TextBlock.Effect>
+                            <DropShadowEffect Color="White" BlurRadius="30" ShadowDepth="0"/>
+                        </TextBlock.Effect>
+                    </TextBlock>
+                    <TextBlock FontSize="36" Foreground="White" FontWeight="Bold"
+                               HorizontalAlignment="Center" Text="¡POSE PERFECTA!"/>
+                    <TextBlock x:Name="SuccessScore" FontSize="24"
+                               Foreground="#CCFFFFFF" HorizontalAlignment="Center"/>
+                </StackPanel>
+            </Border>
+
+            <!-- Overlay Game Over -->
+            <Border x:Name="GameOverOverlay" Visibility="Collapsed"
+                    Background="#CC0D0D1A" CornerRadius="16">
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <TextBlock Text="GAME OVER" FontSize="56" FontWeight="Bold"
+                               Foreground="#FF4B6A" HorizontalAlignment="Center">
+                        <TextBlock.Effect>
+                            <DropShadowEffect Color="#FF4B6A" BlurRadius="20" ShadowDepth="0"/>
+                        </TextBlock.Effect>
+                    </TextBlock>
+                    <TextBlock x:Name="FinalScore" FontSize="28" Foreground="White"
+                               HorizontalAlignment="Center" Margin="0,10,0,20"/>
+                    <Button Content="JUGAR DE NUEVO" Click="BtnRestart_Click"
+                            Background="#7B61FF" Foreground="White"
+                            FontSize="18" FontWeight="Bold" Padding="30,12"
+                            BorderThickness="0" Cursor="Hand">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border Background="{TemplateBinding Background}"
+                                        CornerRadius="10" Padding="30,12">
+                                    <ContentPresenter HorizontalAlignment="Center"
+                                                      VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                </StackPanel>
+            </Border>
+
+            <!-- Accuracy meter -->
+            <Border VerticalAlignment="Bottom" HorizontalAlignment="Left"
+                    Margin="16" Background="#AA000000" CornerRadius="10" Padding="12,8">
+                <StackPanel>
+                    <TextBlock Text="PRECISIÓN" Foreground="#AAFFFFFF"
+                               FontSize="10" FontWeight="Bold"/>
+                    <ProgressBar x:Name="AccuracyBar" Minimum="0" Maximum="100"
+                                 Value="0" Height="10" Width="160"
+                                 Background="#33FFFFFF" Foreground="#7B61FF"
+                                 Margin="0,4,0,0"/>
+                    <TextBlock x:Name="AccuracyLabel" Foreground="White"
+                               FontSize="20" FontWeight="Bold" Text="0%"
+                               HorizontalAlignment="Center"/>
+                </StackPanel>
+            </Border>
+        </Grid>
+
+        <!-- PANEL DERECHO -->
+        <StackPanel Grid.Column="1" Margin="0,10,10,10">
+
+            <!-- Selector de cámara -->
+            <Border Background="#1A1A2E" CornerRadius="12" Padding="12" Margin="0,0,0,10">
+                <StackPanel>
+                    <TextBlock Text="CÁMARA" Foreground="#7B61FF"
+                               FontSize="11" FontWeight="Bold" Margin="0,0,0,6"/>
+                    <ComboBox x:Name="CameraSelector"
+                              Background="#0D0D1A" Foreground="White"
+                              BorderBrush="#7B61FF" FontSize="13"
+                              SelectionChanged="CameraSelector_Changed"/>
+                </StackPanel>
+            </Border>
+
+            <!-- Puntuación -->
+            <Border Background="#1A1A2E" CornerRadius="12" Padding="16" Margin="0,0,0,10">
+                <StackPanel>
+                    <TextBlock Text="PUNTUACIÓN" Foreground="#7B61FF"
+                               FontSize="11" FontWeight="Bold"/>
+                    <TextBlock x:Name="ScoreLabel" Text="0"
+                               FontSize="52" FontWeight="Bold" Foreground="White"
+                               HorizontalAlignment="Center">
+                        <TextBlock.Effect>
+                            <DropShadowEffect Color="#7B61FF" BlurRadius="20" ShadowDepth="0"/>
+                        </TextBlock.Effect>
+                    </TextBlock>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"
+                                Margin="0,4,0,0">
+                        <TextBlock x:Name="Heart1" Text="♥" Style="{StaticResource LiveHeart}"/>
+                        <TextBlock x:Name="Heart2" Text="♥" Style="{StaticResource LiveHeart}" Margin="4,0"/>
+                        <TextBlock x:Name="Heart3" Text="♥" Style="{StaticResource LiveHeart}"/>
+                    </StackPanel>
+                    <TextBlock x:Name="RoundLabel" Text="Ronda 0"
+                               Foreground="#AAFFFFFF" FontSize="13"
+                               HorizontalAlignment="Center" Margin="0,6,0,0"/>
+                </StackPanel>
+            </Border>
+
+            <!-- Pose objetivo -->
+            <Border Background="#1A1A2E" CornerRadius="12" Padding="12" Margin="0,0,0,10">
+                <StackPanel>
+                    <TextBlock Text="IMITA ESTA POSE" Foreground="#7B61FF"
+                               FontSize="11" FontWeight="Bold" Margin="0,0,0,8"/>
+                    <TextBlock x:Name="PoseName" Text="—" Foreground="White"
+                               FontSize="16" FontWeight="Bold"
+                               HorizontalAlignment="Center" Margin="0,0,0,8"/>
+                    <Border Background="#0D0D1A" CornerRadius="10" Height="200">
+                        <Canvas x:Name="RefPoseCanvas" Width="200" Height="180"
+                                HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                </StackPanel>
+            </Border>
+
+            <!-- Botón Calibrar -->
+            <Button x:Name="BtnCalibrate" Content="⚙  CALIBRAR PUNTOS"
+                    Click="BtnCalibrate_Click" Margin="0,0,0,8"
+                    Background="#FF6B35" Foreground="White"
+                    FontSize="15" FontWeight="Bold"
+                    BorderThickness="0" Cursor="Hand" Height="46">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="10">
+                            <ContentPresenter HorizontalAlignment="Center"
+                                              VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+
+            <!-- Botón Start -->
+            <Button x:Name="BtnStart" Content="▶  INICIAR JUEGO"
+                    Click="BtnStart_Click" Margin="0,0,0,8"
+                    Background="#7B61FF" Foreground="White"
+                    FontSize="15" FontWeight="Bold"
+                    BorderThickness="0" Cursor="Hand" Height="46">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="10">
+                            <ContentPresenter HorizontalAlignment="Center"
+                                              VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+
+            <TextBlock x:Name="StatusLabel"
+                       Text="Selecciona una cámara e inicia"
+                       Foreground="#88FFFFFF" FontSize="12"
+                       TextWrapping="Wrap" TextAlignment="Center"/>
+        </StackPanel>
     </Grid>
 </Window>

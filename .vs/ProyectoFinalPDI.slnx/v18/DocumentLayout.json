@@ -7,8 +7,20 @@
       "RelativeMoniker": "D:0:0:{67E22A74-A939-4048-8740-87A2375AFBDD}|ProyectoFinalPDI.csproj|solutionrelative:mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{67E22A74-A939-4048-8740-87A2375AFBDD}|ProyectoFinalPDI.csproj|c:\\users\\wiget\\onedrive\\desktop\\proyectofinalpdi\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{67E22A74-A939-4048-8740-87A2375AFBDD}|ProyectoFinalPDI.csproj|C:\\Users\\wiget\\OneDrive\\Desktop\\ProyectoFinalPDI\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{67E22A74-A939-4048-8740-87A2375AFBDD}|ProyectoFinalPDI.csproj|solutionrelative:mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{67E22A74-A939-4048-8740-87A2375AFBDD}|ProyectoFinalPDI.csproj|C:\\Users\\wiget\\OneDrive\\Desktop\\ProyectoFinalPDI\\skindetector.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{67E22A74-A939-4048-8740-87A2375AFBDD}|ProyectoFinalPDI.csproj|solutionrelative:skindetector.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{67E22A74-A939-4048-8740-87A2375AFBDD}|ProyectoFinalPDI.csproj|C:\\Users\\wiget\\OneDrive\\Desktop\\ProyectoFinalPDI\\gameengine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{67E22A74-A939-4048-8740-87A2375AFBDD}|ProyectoFinalPDI.csproj|solutionrelative:gameengine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{67E22A74-A939-4048-8740-87A2375AFBDD}|ProyectoFinalPDI.csproj|C:\\Users\\wiget\\OneDrive\\Desktop\\ProyectoFinalPDI\\posedata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{67E22A74-A939-4048-8740-87A2375AFBDD}|ProyectoFinalPDI.csproj|solutionrelative:posedata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,8 +30,44 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 3,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "GameEngine.cs",
+              "DocumentMoniker": "C:\\Users\\wiget\\OneDrive\\Desktop\\ProyectoFinalPDI\\GameEngine.cs",
+              "RelativeDocumentMoniker": "GameEngine.cs",
+              "ToolTip": "C:\\Users\\wiget\\OneDrive\\Desktop\\ProyectoFinalPDI\\GameEngine.cs",
+              "RelativeToolTip": "GameEngine.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAmwAsAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-07T14:12:24.676Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "SkinDetector.cs",
+              "DocumentMoniker": "C:\\Users\\wiget\\OneDrive\\Desktop\\ProyectoFinalPDI\\SkinDetector.cs",
+              "RelativeDocumentMoniker": "SkinDetector.cs",
+              "ToolTip": "C:\\Users\\wiget\\OneDrive\\Desktop\\ProyectoFinalPDI\\SkinDetector.cs",
+              "RelativeToolTip": "SkinDetector.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-07T14:11:26.639Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "PoseData.cs",
+              "DocumentMoniker": "C:\\Users\\wiget\\OneDrive\\Desktop\\ProyectoFinalPDI\\PoseData.cs",
+              "RelativeDocumentMoniker": "PoseData.cs",
+              "ToolTip": "C:\\Users\\wiget\\OneDrive\\Desktop\\ProyectoFinalPDI\\PoseData.cs",
+              "RelativeToolTip": "PoseData.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-07T14:10:48.541Z"
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
@@ -40,10 +88,9 @@
               "RelativeDocumentMoniker": "MainWindow.xaml.cs",
               "ToolTip": "C:\\Users\\wiget\\OneDrive\\Desktop\\ProyectoFinalPDI\\MainWindow.xaml.cs",
               "RelativeToolTip": "MainWindow.xaml.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAANIBAAAAAAAAAAAUwO0BAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-07T13:04:05.386Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-06-07T13:04:05.386Z"
             }
           ]
         }
